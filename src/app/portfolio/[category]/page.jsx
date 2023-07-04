@@ -1,9 +1,10 @@
-import React from "react";
+"use client"
 import styles from "./page.module.css";
 import Button from "@/components/Button/Button";
 import Image from "next/image";
 import { items } from "./data.js";
 import { notFound } from "next/navigation";
+import { motion } from "framer-motion";
 
 const getData = (cat) => {
   const data = items[cat];
@@ -18,7 +19,11 @@ const getData = (cat) => {
 const Category = ({ params }) => {
   const data = getData(params.category);
   return (
-    <div className={styles.container}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={styles.container}
+    >
       <h1 className={styles.catTitle}>{params.category}</h1>
 
       {data.map((item) => (
@@ -33,7 +38,7 @@ const Category = ({ params }) => {
           </div>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

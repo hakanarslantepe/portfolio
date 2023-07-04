@@ -1,11 +1,16 @@
-import React from "react";
+"use client"
 import styles from "./page.module.css";
 import Image from "next/image";
 import Button from "@/components/Button/Button";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className={styles.container}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={styles.container}
+    >
       <div className={styles.imgContainer}>
         <Image
           src="https://images.pexels.com/photos/3194521/pexels-photo-3194521.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -56,7 +61,7 @@ const About = () => {
           <Button url="/contact" text="Contact" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

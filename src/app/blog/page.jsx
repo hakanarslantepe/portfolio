@@ -1,7 +1,8 @@
-import React from "react";
+"use client";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 async function getData() {
   const res = await fetch("http://localhost:3000/api/posts", {
@@ -18,7 +19,11 @@ async function getData() {
 const Blog = async () => {
   const data = await getData();
   return (
-    <div className={styles.mainContainer}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={styles.mainContainer}
+    >
       {data.map((item) => (
         <Link
           href={`/blog/${item._id}`}
@@ -40,7 +45,7 @@ const Blog = async () => {
           </div>
         </Link>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
